@@ -6,7 +6,7 @@ const Progress = {
 
   get() {
     const data = localStorage.getItem(this.STORAGE_KEY);
-    return data ? JSON.parse(data) : { unlocked: 0, solved: [false, false, false, false, false] };
+    return data ? JSON.parse(data) : { unlocked: 0, solved: [false, false, false, false, false, false] };
   },
 
   set(data) {

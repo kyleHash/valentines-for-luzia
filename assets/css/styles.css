@@ -24,6 +24,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
+}
+
+/* Clickable elements get pointer cursor */
+a, button, input[type="submit"], .btn {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23ff1493" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), pointer !important;
 }
 
 body {
@@ -502,6 +508,152 @@ p {
   50% {
     transform: translateY(-20px) rotate(5deg);
   }
+}
+
+/* ===========================
+   Word Search Puzzle Styles
+   =========================== */
+.word-search-container {
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+.word-search-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: rgba(255, 158, 205, 0.05);
+  border-radius: 8px;
+}
+
+.word-search-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: white;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.word-search-cell:hover {
+  background: rgba(255, 105, 180, 0.1);
+}
+
+.word-search-cell.selected {
+  background: var(--accent);
+  color: white;
+  transform: scale(1.05);
+}
+
+.word-search-cell.found {
+  background: var(--success);
+  color: white;
+}
+
+.words-to-find {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 158, 205, 0.05);
+  border-radius: 8px;
+}
+
+.word-item {
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.word-item.found {
+  text-decoration: line-through;
+  color: var(--success);
+  opacity: 0.6;
+}
+
+/* ===========================
+   Photo Gallery Styles
+   =========================== */
+.photo-gallery {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(255, 158, 205, 0.05);
+  border-radius: 12px;
+}
+
+.photo-gallery h2 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+}
+
+.photo-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  padding: 1rem 0.5rem 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.photo-item:hover .photo-caption {
+  transform: translateY(0);
+}
+
+.photo-upload-box {
+  border: 3px dashed var(--accent);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(255, 158, 205, 0.05);
+  margin: 2rem 0;
+}
+
+.photo-upload-box p {
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1rem;
 }
 
 /* ===========================

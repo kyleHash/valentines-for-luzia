@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonus Puzzle - Our Love Story 💕</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="progress-indicator">💕 Bonus Puzzle - Just for Fun! 💕</div>
+
+    <div class="card">
+      <h1>💖 Our Love Story Word Search 💖</h1>
+      <p style="font-size: 1.05rem;">Luzia, before we celebrate, let's play one more game! Find all the words that represent us... 💕</p>
+      <p style="color: var(--muted); font-style: italic; text-align: center;">
+        Click and drag to select words (horizontal, vertical, or diagonal)
+      </p>
+
+      <div class="word-search-container">
+        <div class="words-to-find" id="words-list">
+          <div class="word-item" data-word="KYLE">KYLE</div>
+          <div class="word-item" data-word="LUZIA">LUZIA</div>
+          <div class="word-item" data-word="LOVE">LOVE</div>
+          <div class="word-item" data-word="HEART">HEART</div>
+          <div class="word-item" data-word="KISS">KISS</div>
+        </div>
+
+        <div class="word-search-grid" id="word-grid"></div>
+
+        <p style="text-align: center; color: var(--muted); margin-top: 1rem;">
+          <span id="found-count">0</span> of 5 words found
+        </p>
+      </div>
+
+      <div id="completion-message" style="display: none; text-align: center; margin-top: 2rem;">
+        <p style="font-size: 1.3rem; color: var(--success); font-weight: 600;">
+          ✨ Perfect! You found them all! ✨
+        </p>
+        <button id="continue-btn" class="btn btn-primary btn-large" style="margin-top: 1rem;">
+          💕 Continue to Final Page
+        </button>
+      </div>
+
+      <div class="nav-links">
+        <a href="puzzle-5.html">← Previous Puzzle</a>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--muted); font-size: 0.9rem;">
+        One last game before the big question! Love, Kyle 💕
+      </p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Check access
+    checkAccess(5);
+
+    // Word search grid (10x10) - Words spread out across the grid
+    const grid = [
+      ['K', 'Y', 'L', 'E', 'M', 'N', 'P', 'Q', 'R', 'S'],
+      ['T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C'],
+      ['D', 'E', 'F', 'G', 'L', 'O', 'V', 'E', 'I', 'J'],
+      ['K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'],
+      ['U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D'],
+      ['L', 'E', 'F', 'G', 'H', 'E', 'I', 'J', 'K', 'L'],
+      ['U', 'M', 'N', 'O', 'P', 'A', 'Q', 'R', 'S', 'T'],
+      ['Z', 'U', 'V', 'W', 'X', 'R', 'Y', 'Z', 'A', 'B'],
+      ['I', 'C', 'D', 'E', 'F', 'T', 'G', 'H', 'I', 'J'],
+      ['A', 'K', 'I', 'S', 'S', 'K', 'L', 'M', 'N', 'O']
+    ];
+
+    // Words to find with their positions (row, col, direction)
+    const words = {
+      'KYLE': { start: [0, 0], end: [0, 3], dir: 'horizontal' },
+      'LOVE': { start: [2, 4], end: [2, 7], dir: 'horizontal' },
+      'LUZIA': { start: [4, 0], end: [9, 0], dir: 'vertical' },
+      'HEART': { start: [5, 5], end: [8, 5], dir: 'vertical' },
+      'KISS': { start: [9, 1], end: [9, 4], dir: 'horizontal' }
+    };
+
+    let foundWords = new Set();
+    let isSelecting = false;
+    let selectedCells = [];
+
+    // Create grid
+    const gridElement = document.getElementById('word-grid');
+    grid.forEach((row, rowIndex) => {
+      row.forEach((letter, colIndex) => {
+        const cell = document.createElement('div');
+        cell.className = 'word-search-cell';
+        cell.textContent = letter;
+        cell.dataset.row = rowIndex;
+        cell.dataset.col = colIndex;
+
+        cell.addEventListener('mousedown', () => startSelection(cell));
+        cell.addEventListener('mouseenter', () => continueSelection(cell));
+        cell.addEventListener('mouseup', () => endSelection());
+
+        gridElement.appendChild(cell);
+      });
+    });
+
+    document.addEventListener('mouseup', () => endSelection());
+
+    function startSelection(cell) {
+      isSelecting = true;
+      selectedCells = [cell];
+      cell.classList.add('selected');
+    }
+
+    function continueSelection(cell) {
+      if (!isSelecting) return;
+      if (!selectedCells.includes(cell)) {
+        selectedCells.push(cell);
+        cell.classList.add('selected');
+      }
+    }
+
+    function endSelection() {
+      if (!isSelecting) return;
+      isSelecting = false;
+
+      // Check if selected cells match any word
+      const selectedWord = selectedCells.map(cell => cell.textContent).join('');
+      const reverseWord = selectedWord.split('').reverse().join('');
+
+      let matchedWord = null;
+      for (const [word, positions] of Object.entries(words)) {
+        if (word === selectedWord || word === reverseWord) {
+          matchedWord = word;
+          break;
+        }
+      }
+
+      if (matchedWord && !foundWords.has(matchedWord)) {
+        // Mark word as found
+        foundWords.add(matchedWord);
+        selectedCells.forEach(cell => {
+          cell.classList.remove('selected');
+          cell.classList.add('found');
+        });
+
+        // Update UI
+        const wordElement = document.querySelector(`[data-word="${matchedWord}"]`);
+        if (wordElement) {
+          wordElement.classList.add('found');
+        }
+
+        document.getElementById('found-count').textContent = foundWords.size;
+
+        // Check if all words found
+        if (foundWords.size === 5) {
+          setTimeout(() => {
+            document.getElementById('completion-message').style.display = 'block';
+            triggerConfetti();
+          }, 500);
+        }
+      } else {
+        // Clear selection
+        selectedCells.forEach(cell => cell.classList.remove('selected'));
+      }
+
+      selectedCells = [];
+    }
+
+    // Continue button
+    document.getElementById('continue-btn').addEventListener('click', () => {
+      window.location.href = 'final.html';
+    });
+
+    // Simple confetti effect
+    function triggerConfetti() {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          createConfetti();
+        }, i * 50);
+      }
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + '%';
+      confetti.style.background = ['#ff69b4', '#ff85c8', '#ffb3e0', '#ffd700'][Math.floor(Math.random() * 4)];
+      confetti.style.animation = `fall ${2 + Math.random() * 2}s linear forwards`;
+      document.body.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 4000);
+    }
+
+    // Add fall animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
