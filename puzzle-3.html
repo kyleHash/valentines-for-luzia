@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 3 - Secret Message 💌</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="progress-indicator">💕 Puzzle 3 of 5 💕</div>
+
+    <div class="card">
+      <h1>💌 Love's Secret Code 💌</h1>
+      <p style="font-size: 1.05rem;">My dearest Luzia, remember that special date? (February 14th = the number 14!)</p>
+      <p style="color: var(--muted); font-style: italic;">
+        Use the number <strong style="color: var(--accent);">14</strong> to shift each letter <strong>backward</strong> in the alphabet to reveal who shot his arrow at my heart...
+      </p>
+
+      <div class="cipher-text">
+        QIDWR
+      </div>
+
+      <p style="text-align: center; color: var(--muted); font-style: italic;">
+        What word is hidden here?
+      </p>
+
+      <div id="toast" class="toast"></div>
+
+      <div id="solved-message" style="display: none; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 8px; margin-bottom: 1rem; color: var(--success); font-weight: 600;">
+        ✓ You've already solved this puzzle!
+      </div>
+
+      <form id="puzzle-form" class="input-group">
+        <input
+          type="text"
+          id="answer-input"
+          class="input"
+          placeholder="Enter your answer..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+      </form>
+
+      <button id="hint-btn" class="btn btn-secondary btn-small">💭 Need a Hint?</button>
+
+      <div id="hint-box" class="hint-box">
+        <p id="hint-text" class="hint-text"></p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">← Back to Home</a>
+        <a href="puzzle-2.html">← Previous Puzzle</a>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--muted); font-size: 0.9rem;">
+        You've captured my heart, Kyle 💘
+      </p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Check access
+    checkAccess(2);
+
+    // Setup puzzle with hints
+    const hints = [
+      "The number from FEB14 is 14. Shift each letter backward by 14 positions! 🔤",
+      "Caesar cipher magic: Q goes back 14 to C, I goes back 14 to U, and so on... 💫",
+      "Who is the Roman god of love with a bow and arrow? CUPID! 💘"
+    ];
+
+    setupPuzzle(3, 'CUPID', 'puzzle-4.html', hints);
+  </script>
+</body>
+</html>

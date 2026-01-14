@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 2 - Special Date 💕</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="progress-indicator">💕 Puzzle 2 of 5 💕</div>
+
+    <div class="card">
+      <h1>💖 Our Special Date 💖</h1>
+      <p style="font-size: 1.05rem;">Luzia, just like you decoded your name from my poem, now follow these coordinates to discover a date that's extra special for us...</p>
+
+      <div class="letter-grid">
+        <div class="grid-cell header"></div>
+        <div class="grid-cell header">C1</div>
+        <div class="grid-cell header">C2</div>
+        <div class="grid-cell header">C3</div>
+        <div class="grid-cell header">C4</div>
+        <div class="grid-cell header">C5</div>
+
+        <div class="grid-cell header">R1</div>
+        <div class="grid-cell">H</div>
+        <div class="grid-cell">A</div>
+        <div class="grid-cell">F</div>
+        <div class="grid-cell">T</div>
+        <div class="grid-cell">Q</div>
+
+        <div class="grid-cell header">R2</div>
+        <div class="grid-cell">P</div>
+        <div class="grid-cell">L</div>
+        <div class="grid-cell">K</div>
+        <div class="grid-cell">E</div>
+        <div class="grid-cell">W</div>
+
+        <div class="grid-cell header">R3</div>
+        <div class="grid-cell">M</div>
+        <div class="grid-cell">X</div>
+        <div class="grid-cell">B</div>
+        <div class="grid-cell">O</div>
+        <div class="grid-cell">R</div>
+
+        <div class="grid-cell header">R4</div>
+        <div class="grid-cell">N</div>
+        <div class="grid-cell">V</div>
+        <div class="grid-cell">G</div>
+        <div class="grid-cell">1</div>
+        <div class="grid-cell">S</div>
+
+        <div class="grid-cell header">R5</div>
+        <div class="grid-cell">U</div>
+        <div class="grid-cell">C</div>
+        <div class="grid-cell">I</div>
+        <div class="grid-cell">D</div>
+        <div class="grid-cell">4</div>
+      </div>
+
+      <div class="coordinates">
+        <strong>Coordinates:</strong> R1C3, R2C4, R3C3, R4C4, R5C5
+      </div>
+
+      <p style="font-style: italic; color: var(--muted); text-align: center;">
+        What do these coordinates reveal?
+      </p>
+
+      <div id="toast" class="toast"></div>
+
+      <div id="solved-message" style="display: none; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 8px; margin-bottom: 1rem; color: var(--success); font-weight: 600;">
+        ✓ You've already solved this puzzle!
+      </div>
+
+      <form id="puzzle-form" class="input-group">
+        <input
+          type="text"
+          id="answer-input"
+          class="input"
+          placeholder="Enter your answer..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+      </form>
+
+      <button id="hint-btn" class="btn btn-secondary btn-small">💭 Need a Hint?</button>
+
+      <div id="hint-box" class="hint-box">
+        <p id="hint-text" class="hint-text"></p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">← Back to Home</a>
+        <a href="puzzle-1.html">← Previous Puzzle</a>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--muted); font-size: 0.9rem;">
+        Forever yours, Kyle 💕
+      </p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Check access
+    checkAccess(1);
+
+    // Setup puzzle with hints
+    const hints = [
+      "Find the letter at each coordinate. For example, R1C3 means Row 1, Column 3. 📍",
+      "The coordinates spell out the most romantic date of the year... 💕",
+      "February 14th - Valentine's Day! Enter it as FEB14 💖"
+    ];
+
+    setupPuzzle(2, 'FEB14', 'puzzle-3.html', hints);
+  </script>
+</body>
+</html>

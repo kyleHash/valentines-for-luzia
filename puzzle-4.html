@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 4 - From My Heart 💖</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="progress-indicator">💕 Puzzle 4 of 5 💕</div>
+
+    <div class="card">
+      <h1>💖 What I'm Giving You 💖</h1>
+      <p style="font-size: 1.05rem;">Luzia, what you see below represents what you've always had from me... Sometimes the most important things are hiding in plain sight. 💕</p>
+
+      <div class="image-container">
+        <img src="assets/images/heart.svg" alt="A decorative HEART symbol representing love" id="heart-image" />
+      </div>
+
+      <p style="text-align: center; color: var(--muted); font-style: italic; margin-top: 1rem;">
+        What does this image represent?
+      </p>
+
+      <button id="toggle-description" class="btn btn-secondary btn-small" style="display: block; margin: 1rem auto;">
+        Show Image Description
+      </button>
+
+      <div id="image-description" class="hint-box">
+        <p style="font-weight: 600; margin-bottom: 0.5rem;">Image Description:</p>
+        <p class="hint-text" style="font-style: normal;">
+          Alt text: "A decorative <strong style="color: var(--accent);">HEART</strong> symbol representing love"
+        </p>
+      </div>
+
+      <div id="toast" class="toast"></div>
+
+      <div id="solved-message" style="display: none; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 8px; margin-bottom: 1rem; color: var(--success); font-weight: 600;">
+        ✓ You've already solved this puzzle!
+      </div>
+
+      <form id="puzzle-form" class="input-group">
+        <input
+          type="text"
+          id="answer-input"
+          class="input"
+          placeholder="Enter your answer..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+      </form>
+
+      <button id="hint-btn" class="btn btn-secondary btn-small">💭 Need a Hint?</button>
+
+      <div id="hint-box" class="hint-box">
+        <p id="hint-text" class="hint-text"></p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">← Back to Home</a>
+        <a href="puzzle-3.html">← Previous Puzzle</a>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--muted); font-size: 0.9rem;">
+        My heart is yours, Kyle 💖
+      </p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Check access
+    checkAccess(3);
+
+    // Setup toggle for image description
+    const toggleBtn = document.getElementById('toggle-description');
+    const description = document.getElementById('image-description');
+
+    if (toggleBtn && description) {
+      toggleBtn.addEventListener('click', () => {
+        description.classList.toggle('show');
+        toggleBtn.textContent = description.classList.contains('show')
+          ? '💝 Hide Image Description'
+          : '💝 Show Image Description';
+      });
+    }
+
+    // Setup puzzle with hints
+    const hints = [
+      "What does the image show? The answer is right there! 💕",
+      "Try clicking 'Show Image Description' to reveal more... 💝",
+      "Look for the word in CAPITAL LETTERS in the description! It's what I'm giving you! 💖"
+    ];
+
+    setupPuzzle(4, 'HEART', 'puzzle-5.html', hints);
+  </script>
+</body>
+</html>

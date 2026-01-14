@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 5 - One More Step ✨</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="progress-indicator">💕 Puzzle 5 of 5 - Final Challenge! 💕</div>
+
+    <div class="card">
+      <h1>✨ The Final Clue ✨</h1>
+      <p style="font-size: 1.05rem;">My darling Luzia, you're almost there! One last puzzle stands between you and the question I've been dying to ask...</p>
+      <p style="color: var(--muted); font-style: italic;">
+        The answer is hidden in the very fabric of this page. Click the button below to peek behind the curtain... 💕
+      </p>
+
+      <div style="text-align: center; margin: 2rem 0;">
+        <button id="toggle-source" class="btn btn-primary" data-show-text="Toggle Page Source" data-hide-text="Hide Page Source">
+          Toggle Page Source
+        </button>
+      </div>
+
+      <div id="page-source" class="code-block">
+        <pre>&lt;div class="clue"&gt;
+  &lt;!-- The final answer is the holiday itself: VALENTINE --&gt;
+  &lt;p&gt;Look for hidden messages...&lt;/p&gt;
+  &lt;span class="hidden"&gt;Sometimes developers leave notes in the code&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <p style="text-align: center; color: var(--muted); font-style: italic; margin-top: 1.5rem;">
+        What is the final answer?
+      </p>
+
+      <div id="toast" class="toast"></div>
+
+      <div id="solved-message" style="display: none; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 8px; margin-bottom: 1rem; color: var(--success); font-weight: 600;">
+        ✓ You've already solved this puzzle!
+      </div>
+
+      <form id="puzzle-form" class="input-group">
+        <input
+          type="text"
+          id="answer-input"
+          class="input"
+          placeholder="Enter your answer..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+      </form>
+
+      <button id="hint-btn" class="btn btn-secondary btn-small">💭 Need a Hint?</button>
+
+      <div id="hint-box" class="hint-box">
+        <p id="hint-text" class="hint-text"></p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">← Back to Home</a>
+        <a href="puzzle-4.html">← Previous Puzzle</a>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--muted); font-size: 0.9rem;">
+        Almost there, Luzia! Love, Kyle 💕
+      </p>
+    </div>
+  </div>
+
+  <!-- Hidden clue in the page source -->
+  <div class="clue" style="display: none;">
+    <!-- The final answer is the holiday itself: VALENTINE -->
+    <p>Look for hidden messages...</p>
+    <span class="hidden">Sometimes developers leave notes in the code</span>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Check access
+    checkAccess(4);
+
+    // Setup toggle for page source
+    setupToggle('toggle-source', 'page-source');
+
+    // Setup puzzle with hints
+    const hints = [
+      "Try clicking the 'Toggle Page Source' button above! 🔍",
+      "Look for comments in the HTML code (they start with <!-- and end with -->) 💬",
+      "What's the name of the holiday we celebrate on February 14th? That's your answer! 💝"
+    ];
+
+    setupPuzzle(5, 'VALENTINE', 'final.html', hints);
+  </script>
+</body>
+</html>

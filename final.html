@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Luzia, With All My Love 💕</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card final-container">
+      <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ff69b4, #ff85c8, #ffb3e0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+        ✨ Luzia, Will You Be My Valentine? ✨
+      </h1>
+
+      <p style="font-size: 1.2rem; color: var(--text); margin-bottom: 1rem; line-height: 1.8;">
+        You did it! You solved every puzzle, followed every clue, and made it here to my heart.
+      </p>
+
+      <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; font-style: italic; line-height: 1.8;">
+        Just like your name appeared in the first puzzle, you've been the answer to everything in my life.
+        Every moment with you is a treasure, and I want to celebrate this Valentine's Day with you... 💕
+      </p>
+
+      <div class="choice-buttons">
+        <button id="yes-btn" class="btn btn-primary btn-large">
+          Yes! 💕
+        </button>
+        <button id="absolutely-btn" class="btn btn-primary btn-large">
+          Of Course! 💖
+        </button>
+      </div>
+
+      <div id="celebration" class="celebration">
+        <p style="font-size: 1.8rem; margin-bottom: 1rem;">
+          You've made me the happiest person alive! 💕✨
+        </p>
+        <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+          Luzia, I can't wait to spend this Valentine's Day with you!
+        </p>
+        <p style="font-size: 1.1rem; font-style: italic;">
+          Forever yours, Kyle 💖
+        </p>
+      </div>
+
+      <div id="replay-section" style="display: none; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+        <button id="replay-btn" class="btn btn-secondary">
+          🔄 Replay from Start
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/confetti.js"></script>
+  <script>
+    // Check access - must have completed all 5 puzzles
+    checkAccess(5);
+
+    const yesBtn = document.getElementById('yes-btn');
+    const absolutelyBtn = document.getElementById('absolutely-btn');
+    const celebration = document.getElementById('celebration');
+    const replaySection = document.getElementById('replay-section');
+    const replayBtn = document.getElementById('replay-btn');
+
+    function celebrate() {
+      // Hide buttons
+      yesBtn.style.display = 'none';
+      absolutelyBtn.style.display = 'none';
+
+      // Show celebration message
+      celebration.classList.add('show');
+
+      // Trigger confetti
+      createConfetti();
+
+      // Show replay option after a delay
+      setTimeout(() => {
+        replaySection.style.display = 'block';
+      }, 3000);
+    }
+
+    // Both buttons do the same thing!
+    yesBtn.addEventListener('click', celebrate);
+    absolutelyBtn.addEventListener('click', celebrate);
+
+    // Replay functionality
+    if (replayBtn) {
+      replayBtn.addEventListener('click', () => {
+        if (confirm('This will reset all your progress. Continue?')) {
+          Progress.reset();
+          window.location.href = 'index.html';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

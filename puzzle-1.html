@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle 1 - Our Beginning ✨</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="progress-indicator">💕 Puzzle 1 of 5 💕</div>
+
+    <div class="card">
+      <h1>✨ Our Love Story Begins ✨</h1>
+      <p style="font-size: 1.05rem;">Dearest Luzia, every moment with you feels like poetry. Read these verses I wrote for you and discover the first clue...</p>
+
+      <div class="puzzle-poem">
+        <strong style="color: var(--accent);">L</strong>ight of my life, you make my world bright,<br>
+        <strong style="color: var(--accent);">U</strong>nder the stars, you're my guiding light,<br>
+        <strong style="color: var(--accent);">Z</strong>ealously loving you, my heart's delight,<br>
+        <strong style="color: var(--accent);">I</strong>n your arms, everything feels right,<br>
+        <strong style="color: var(--accent);">A</strong>lways and forever, you're my sight.
+      </div>
+
+      <p style="font-style: italic; color: var(--muted); margin-top: 1.5rem;">
+        What word do these lines reveal? (Hint: it might be closer than you think! 💕)
+      </p>
+
+      <div id="toast" class="toast"></div>
+
+      <div id="solved-message" style="display: none; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 8px; margin-bottom: 1rem; color: var(--success); font-weight: 600;">
+        ✓ You've already solved this puzzle!
+      </div>
+
+      <form id="puzzle-form" class="input-group">
+        <input
+          type="text"
+          id="answer-input"
+          class="input"
+          placeholder="Enter your answer..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+      </form>
+
+      <button id="hint-btn" class="btn btn-secondary btn-small">💭 Need a Hint?</button>
+
+      <div id="hint-box" class="hint-box">
+        <p id="hint-text" class="hint-text"></p>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">← Back to Home</a>
+      </div>
+
+      <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--muted); font-size: 0.9rem;">
+        With all my love, Kyle 💕
+      </p>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Check access
+    checkAccess(0);
+
+    // Setup puzzle with hints
+    const hints = [
+      "Look at the beginning of each line... there's something special there! 💕",
+      "What do the FIRST LETTERS of each line spell?",
+      "It's your name, Luzia! You're the answer to everything! ✨"
+    ];
+
+    setupPuzzle(1, 'LUZIA', 'puzzle-2.html', hints);
+  </script>
+</body>
+</html>

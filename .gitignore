@@ -1,0 +1,19 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*~
+tmpclaude-*
+
+# Node modules (if you ever add tooling)
+node_modules/
+
+# Personal notes
+PERSONALIZATION_SUMMARY.md
+QUICK_START.txt
