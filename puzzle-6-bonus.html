@@ -94,15 +94,35 @@
         cell.dataset.row = rowIndex;
         cell.dataset.col = colIndex;
 
+        // Mouse events
         cell.addEventListener('mousedown', () => startSelection(cell));
         cell.addEventListener('mouseenter', () => continueSelection(cell));
         cell.addEventListener('mouseup', () => endSelection());
+
+        // Touch events for mobile
+        cell.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          startSelection(cell);
+        });
+        cell.addEventListener('touchmove', (e) => {
+          e.preventDefault();
+          const touch = e.touches[0];
+          const element = document.elementFromPoint(touch.clientX, touch.clientY);
+          if (element && element.classList.contains('word-search-cell')) {
+            continueSelection(element);
+          }
+        });
+        cell.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          endSelection();
+        });
 
         gridElement.appendChild(cell);
       });
     });
 
     document.addEventListener('mouseup', () => endSelection());
+    document.addEventListener('touchend', () => endSelection());
 
     function startSelection(cell) {
       isSelecting = true;

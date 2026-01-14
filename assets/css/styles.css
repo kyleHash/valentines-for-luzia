@@ -698,6 +698,33 @@ p {
     font-size: 1.1rem;
     padding: 1rem;
   }
+
+  /* Mobile-friendly word search */
+  .word-search-grid {
+    gap: 4px;
+    padding: 0.5rem;
+  }
+
+  .word-search-cell {
+    font-size: 1rem;
+    min-height: 35px;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .word-search-container {
+    max-width: 100%;
+  }
+
+  .words-to-find {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .word-item {
+    padding: 0.75rem;
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 480px) {
